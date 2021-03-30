@@ -8,3 +8,27 @@
     <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    
+    <div>
+      投稿id:　<%= restaurant.id %>
+    </div>  
+    <div>
+      店名　<%= restaurant.name %>
+    </div>
+    <div>
+      現在の営業場所　<%= restaurant.place %>
+    </div>
+    <div>
+      内容　<%= restaurant.content %>
+    </div>
+    <div>
+      写真　<%= restaurant.photo %>
+    </div>
+    <div>
+      投稿者　<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+    </div>
+  <% end %>
+</ul>
