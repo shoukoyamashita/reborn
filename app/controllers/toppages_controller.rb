@@ -20,8 +20,9 @@ before_action :set_restaurant,only:[:show, :edit, :update, :destroy]
       flash[:success] = '正常に投稿されました'
       redirect_to @restaurant
     else
+      @restaurants = current_user.restaurants.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿されませんでした'
-      render :new
+      render 'toppages/index'
     end
   end
 

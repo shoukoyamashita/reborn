@@ -1,34 +1,36 @@
-<div class="center jumbotron">
+<div class="center jumbotron text-dark" >
   <div class="text-center">
     <h1>復興グルメ！</h1>
     <h3>~熊本県人吉市周辺のグルメ情報~</h3>
     <p>被災から復活したお店のグルメ情報を投稿して街を盛り上げよう。</p>
     <br>
     <p>投稿するにはユーザー登録、ログインが必要です。</p>
-    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-md btn-success' %>
   </div>
 </div>
 
 <ul>
   <% @restaurants.each do |restaurant| %>
+    <div class="card-header">
+        <h4 class="card-title"><%= restaurant.name %></h4>
+    </div>
+    <div class="card-body">
+      <div>
+        place:<%= restaurant.place %>
+      </div>
+      <div>
+        内容:<%= restaurant.content %>
+      </div>
+      <div>
+        写真:<%= restaurant.photo %>
+      </div>
+      <div>
+        投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+      </div>
+    </div>
     
-    <div>
-      投稿id:　<%= restaurant.id %>
-    </div>  
-    <div>
-      店名　<%= restaurant.name %>
-    </div>
-    <div>
-      現在の営業場所　<%= restaurant.place %>
-    </div>
-    <div>
-      内容　<%= restaurant.content %>
-    </div>
-    <div>
-      写真　<%= restaurant.photo %>
-    </div>
-    <div>
-      投稿者　<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
-    </div>
+        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-primary' %>　
+    <br>
+    <br>
   <% end %>
 </ul>

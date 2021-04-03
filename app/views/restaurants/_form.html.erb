@@ -1,0 +1,17 @@
+<div class="container">
+  <%= form_with(model: @restaurant, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %> 
+    <div class="form-group">
+      店名
+      <%= f.text_area :name, class: 'form-control', rows: 1 %>
+      現在の営業場所
+      <%= f.text_area :place, class: 'form-control', rows: 1 %>
+      料理の解説、お店の解説など一言
+      <%= f.text_area :content, class: 'form-control', rows: 3 %>
+      写真
+      <%= f.file_field :photo, class: 'form-control', rows: 1 %>
+    </div>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>
+

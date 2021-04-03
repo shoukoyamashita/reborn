@@ -14,18 +14,20 @@ class RestaurantsController < ApplicationController
   end
   
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = current_user.restaurants.build(restaurant_params)
     
     if @restaurant.save
       flash[:success] = '正常に投稿されました'
       redirect_to @restaurant
     else
+      @restaurants = current_user.restaurants.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿されませんでした'
-      render :new
+      render 'toppages/index'
     end
   end
 
   def edit
+    @restaurant = Restaurant.find(params[:id])
   end
   
   def update
@@ -38,6 +40,7 @@ class RestaurantsController < ApplicationController
     end 
   end
   def destroy
+    set_restaurant
     @restaurant.destroy
 
     flash[:success] = '正常に削除されました'
@@ -49,6 +52,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
   
+
   #Strong Parameter
   def restaurant_params
     params.require(:restaurant).permit(:content, :name, :photo, :place)

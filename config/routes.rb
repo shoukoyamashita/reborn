@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   
   
   get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
   resources :users, only: [:index, :show, :create]
   
   resources :restaurants
