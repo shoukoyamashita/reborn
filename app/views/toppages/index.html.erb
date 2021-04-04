@@ -1,11 +1,14 @@
-<div class="center jumbotron text-dark" >
+
+
+<div class="jumbotron"  style="background:url(assets/sakura2.jpg); background-size:cover;">
   <div class="text-center">
     <h1>復興グルメ！</h1>
     <h3>~熊本県人吉市周辺のグルメ情報~</h3>
-    <p>被災から復活したお店のグルメ情報を投稿して街を盛り上げよう。</p>
-    <br>
-    <p>投稿するにはユーザー登録、ログインが必要です。</p>
-    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-md btn-success' %>
+    <h4>被災から復活したお店のグルメ情報を投稿して街を盛り上げよう。</h4>
+    <hr>
+    <h5>投稿するにはユーザー登録、ログインが必要です。
+    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-md btn-primary' %>
+    </h5>
   </div>
 </div>
 
@@ -16,7 +19,7 @@
     </div>
     <div class="card-body">
       <div>
-        place:<%= restaurant.place %>
+        営業場所:<%= restaurant.place %>
       </div>
       <div>
         内容:<%= restaurant.content %>
@@ -28,7 +31,6 @@
         投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
       </div>
     </div>
-    
         <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-primary' %>　
     <br>
     <br>

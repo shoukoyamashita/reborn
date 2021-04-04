@@ -6,9 +6,19 @@
   
 
   <table class="table">
-   <tr><td>現在の営業場所</td><td><%= @restaurant.place %></td></tr>
-   <tr><td>内容</td><td><%= @restaurant.content %></td></tr>
-    <tr><td>写真</td><td><%= photo_tag @restaurant.photo.url if @restaurant.photo? %></td></tr>
+  <tr>
+    <td>現在の営業場所</td>
+    <td><%= @restaurant.place %></td>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td><%= @restaurant.content %></td>
+  </tr>
+  <tr>
+    <td>写真</td>
+    <td><%= photo_tag @restaurant.photo.url if @restaurant.photo? %></td>
+  </tr>
   </table>
-  <%= link_to 'この投稿を編集する', edit_restaurant_path(@restaurant), class: 'btn btn-sm btn-primary' %>
-
+  <% if current_user == @restaurant.user %>
+    <%= link_to 'この投稿を編集する', edit_restaurant_path(@restaurant), class: 'btn btn-sm btn-primary' %>
+  <% end %>

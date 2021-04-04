@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
 
   before_action :set_restaurant,only:[:show, :edit, :update, :destroy]
+
   
   def index
     @restaurants = Restaurant.order(id: :desc).page(params[:page]).per(10)
@@ -51,7 +52,6 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
-  
 
   #Strong Parameter
   def restaurant_params

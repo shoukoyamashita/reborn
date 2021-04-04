@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: reborn_production
   username: reborn
   password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>

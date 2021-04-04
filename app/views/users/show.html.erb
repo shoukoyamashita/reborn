@@ -1,7 +1,3 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-<p>◎自分が投稿した内容一覧を設置したい/
   <div class="row">
   <aside class="col-sm-4">
     <div class="card">
@@ -13,7 +9,50 @@
       </div>
     </div>
   </aside>
-  <div class="col-sm-8"
+  
+  <div class="col-sm-8">
+  <h4>◎<%= @user.name %> さんが投稿した内容一覧</h4>
+  <br>
+  <% @restaurants.each do |restaurant| %>
+    <div class="card-header">
+        <h4 class="card-title"><%= restaurant.name %></h4>
+    </div>
+    <div class="card-body">
+      <div>
+        営業場所:<%= restaurant.place %>
+      </div>
+      <div>
+        内容:<%= restaurant.content %>
+      </div>
+      <div>
+        写真:<%= restaurant.photo %>
+      </div>
+      <div>
+        投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+      </div>
+    </div>
+        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-primary' %>　
+    <br>
+    <br>
+  <% end %>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
      
   </div>
 </div>
