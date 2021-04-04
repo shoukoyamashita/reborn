@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @restaurants = Restaurant.order(id: :desc).page(params[:page]).per(25)
     @user = User.find(params[:id])
+    @restaurants = @user.restaurants.order(id: :desc).page(params[:page]).per(25)
   end
 
   def new
