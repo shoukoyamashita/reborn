@@ -10,8 +10,9 @@
     <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-md btn-primary' %></p>
   </div>
 </div>
-
-<ul>
+<%= image_tag 'sakura2.jpg', width: '100%'%>
+<br>
+<br>
   <% @restaurants.each do |restaurant| %>
     <div class="card-header">
         <h4 class="card-title"><%= restaurant.name %></h4>
@@ -34,4 +35,3 @@
     <br>
     <br>
   <% end %>
-</ul>
