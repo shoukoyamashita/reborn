@@ -1,6 +1,6 @@
 <div class="container">
   <%= form_with(model: @restaurant, local: true) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %> 
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
       店名
       <%= f.text_area :name, class: 'form-control', rows: 1 %>
