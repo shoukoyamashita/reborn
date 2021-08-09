@@ -1,25 +1,23 @@
-<h4>投稿id: <%= @restaurant.id %> の詳細ページ</h1>
+<h6>投稿id: <%= @restaurant.id %> の詳細ページ</h1>
 
   <div class="card-header">
-    <h4 class="card-title"><%= @restaurant.name %></h4>
+    <h3 class="card-title"><%= @restaurant.name %></h3>
   </div>
   
 
-  <table class="table">
-    <tr>
-      <td>現在の営業場所</td>
-      <td><%= @restaurant.place %></td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td><%= @restaurant.content %></td>
-    </tr>
-    <tr>
-      <td>写真</td>
-      <td><%= image_tag @restaurant.photo.url , width: '80%' if @restaurant.photo? %></td>
-    </tr>
-  </table>
-  
+  <div class="card-body">
+    <p>
+      <button type="button" class="btn btn-outline-dark btn-sm" disabled>現在の営業場所</button>
+      　<%= @restaurant.place %>
+    </p>
+    <p>
+      <button type="button" class="btn btn-outline-dark btn-sm" disabled>料理・お店について</button>
+    　<%= @restaurant.content %>
+    </p>
+      <%= image_tag @restaurant.photo.url , width: '80%' if @restaurant.photo? %>
+    <p>
+      投稿者:<%= link_to @restaurant.user.name, user_path(@restaurant.user) %> <span class="text-muted">posted at <%= @restaurant.created_at %></span>
+    </P>
   <% if current_user == @restaurant.user %>
     <%= link_to 'この投稿を編集する', edit_restaurant_path(@restaurant), class: 'btn btn-sm btn-outline-primary' %>
     <%= link_to "この投稿を削除する", @restaurant, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>
