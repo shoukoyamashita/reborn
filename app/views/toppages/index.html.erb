@@ -27,16 +27,18 @@
   
   <div class="card-body">
     <div>
-      営業場所:<%= restaurant.place %>
+      <button type="button" class="btn btn-outline-secondary">営業場所</button>　
+      <%= restaurant.place %>
     </div>
-    
+    <br>
     <div>
-      内容:<%= restaurant.content %>
+      料理・お店について
+      <%= restaurant.content %>
     </div>
     
     <div>
       <% if restaurant.photo? %>
-        <%= image_tag restaurant.photo.url %>
+        <%= image_tag restaurant.photo.url , width: '80%' %>
       <% end%>
     </div>
     
