@@ -1,35 +1,55 @@
-<div class="jumbotron" >
-  <div class="text-center">
-    <h1>復興グルメ！</h1>
-    <h3>~熊本県人吉市周辺のグルメ情報~</h3>
+<!--div class="jumbotron"style="background: url(<%= asset_path "hitoyoshi_station.jpg" %>); background-size:cover;"-->
+
+<!--/div-->
+
+<div class="text-center">
+  <h1>復興グルメ！</h1>
+  <h3>熊本県人吉市周辺のグルメ情報</h3>
+  <br>
     <p>被災から復活したお店のグルメ情報を投稿して街を盛り上げよう。</p>
-    <hr>
-    <p>投稿するにはユーザー登録、ログインが必要です。
-    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-md btn-primary' %></p>
-  </div>
+  <hr>
 </div>
-<%= image_tag 'sakura2.jpg', width: '100%'%>
-<br>
-<br>
-  <% @restaurants.each do |restaurant| %>
-    <div class="card-header">
-        <h4 class="card-title"><%= restaurant.name %></h4>
+
+<% if logged_in?%>
+  <p>いつもご利用ありがとうございます</p>
+<% else %>
+  <p align=center>
+          投稿するにはユーザー登録、ログインが必要です。
+          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-outline-success' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-outline-success' %>
+  </p>
+<% end %>
+<% @restaurants.each do |restaurant| %>
+
+  <div class="card-header border-info">
+      <h4 class="card-title"><%= restaurant.name %></h4>
+  </div>
+  
+  <div class="card-body">
+    <div>
+      営業場所:<%= restaurant.place %>
     </div>
-    <div class="card-body">
-      <div>
-        営業場所:<%= restaurant.place %>
-      </div>
-      <div>
-        内容:<%= restaurant.content %>
-      </div>
-      <div>
-        写真:<%= restaurant.photo %>
-      </div>
-      <div>
-        投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
-      </div>
+    
+    <div>
+      内容:<%= restaurant.content %>
     </div>
-        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-primary' %>　
-    <br>
-    <br>
-  <% end %>
+    
+    <div>
+      <% if restaurant.photo? %>
+        <%= image_tag restaurant.photo.url %>
+      <% end%>
+    </div>
+    
+    <div>
+      投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+    </div>
+    
+    <div>
+      <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-outline-primary' %>　
+      <% if current_user == restaurant.user %>
+      <%= link_to "この投稿を削除する", restaurant, method: :delete, data: { confirm: "削除してよろしいですか?" }, class: 'btn btn-outline-danger btn-sm' %>
+      <% end %>
+    </div>
+  </div>
+  
+<% end %>

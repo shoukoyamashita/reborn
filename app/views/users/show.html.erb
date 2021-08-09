@@ -32,10 +32,10 @@
         写真:<%= restaurant.photo %>
       </div>
       <div>
-        投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+        投稿者:<%= restaurant.user.name %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
       </div>
     </div>
-        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-primary' %>　
+        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-outline-primary' %>　
     <br>
     <br>
   <% end %>

@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
 
   before_action :set_restaurant,only:[:show, :edit, :update, :destroy]
-
   
   def index
     @restaurants = Restaurant.order(id: :desc).page(params[:page]).per(10)
@@ -23,7 +22,8 @@ class RestaurantsController < ApplicationController
     else
       @restaurants = current_user.restaurants.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿されませんでした'
-      render 'toppages/index'
+      render action: "new"
+      #render 'toppages/index'
     end
   end
 
@@ -40,18 +40,18 @@ class RestaurantsController < ApplicationController
       render :edit
     end 
   end
+  
   def destroy
-    set_restaurant
     @restaurant.destroy
-
-    flash[:success] = '正常に削除されました'
-    redirect_to restaurants_url
+    flash[:success] = 'メッセージを削除しました。'
+    redirect_to root_url
+    
   end
   
   private
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:id])
+    end
 
   #Strong Parameter
   def restaurant_params
