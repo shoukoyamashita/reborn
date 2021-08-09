@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td>写真</td>
-      <td><%= image_tag @restaurant.photo.url if @restaurant.photo? %></td>
+      <td><%= image_tag @restaurant.photo.url , width: '80%' if @restaurant.photo? %></td>
     </tr>
   </table>
   

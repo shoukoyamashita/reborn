@@ -29,7 +29,9 @@
         内容:<%= restaurant.content %>
       </div>
       <div>
-        写真:<%= restaurant.photo %>
+        <% if restaurant.photo? %>
+        <%= image_tag restaurant.photo.url , width: '50%' %>
+        <% end%>
       </div>
       <div>
         投稿者:<%= restaurant.user.name %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
