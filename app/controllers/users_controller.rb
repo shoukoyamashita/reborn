@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :destroy]
+  
+  
   def index
-    @users = User.order(id: :desc).page(params[:page]).per(25)
+    @users = User.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
-    @restaurants = @user.restaurants.order(id: :desc).page(params[:page]).per(25)
+    @restaurants = @user.restaurants.order(id: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -23,6 +25,13 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
     end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+      flash[:success] = 'ユーザー削除（退会）しました'
+      redirect_to root_url
   end
   
   private

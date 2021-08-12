@@ -1,16 +1,19 @@
-  <div class="row">
+<div class="row">
   <aside class="col-sm-4">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+        <!--img src="<%= gravatar_url(@user, { size: 500 }) %>" alt=""-->
       </div>
     </div>
+    <%= link_to 'トップページに戻る', root_url , class: 'btn btn-sm btn-outline-primary' %>
   </aside>
   
   <div class="col-sm-8">
+    
+    
   <h4>◎<%= @user.name %> さんが投稿した内容一覧</h4>
   
    
