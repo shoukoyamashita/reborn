@@ -1,9 +1,3 @@
-<!--div class="jumbotron"style="background: url(<%= asset_path "hitoyoshi_station.jpg" %>); background-size:cover;"-->
-
-<!--/div-->
-
-
-
 <div class="text-center">
   <h3>熊本県人吉市周辺のグルメ情報</h3>
   <%= image_tag 'hitoyoshi_station2.jpg' ,width: '100%'%>
@@ -45,7 +39,7 @@
     </P>
     <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-success' %>　
     <% if current_user == restaurant.user %>
-    <%= link_to "この投稿を削除する", restaurant, method: :delete, data: { confirm: "削除してよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
+    <%= link_to "この投稿を削除する", restaurant, method: :delete, data: { confirm: "削除してよろしいですか?" }, class: 'btn btn-outline-danger btn-sm' %>
     <% end %>
    </div>
 <% end %>

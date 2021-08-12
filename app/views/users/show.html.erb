@@ -2,66 +2,49 @@
   <aside class="col-sm-4">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
+        <h3 class="card-title"><%= @user.name %>さん</h3>
+        <%= link_to 'プロフィールを編集する', edit_user_url, class: 'btn btn-sm btn-outline-success' %>
       </div>
       <div class="card-body">
-        <!--img src="<%= gravatar_url(@user, { size: 500 }) %>" alt=""-->
-      </div>
+          <!-- img src="<%= gravatar_url(@user, { size: 250 }) %>" alt="" -->
+      <p>自己紹介</p>
+      　
+      <% if @user.prof? %>
+        <%= @user.prof %>
+      <% end%>
     </div>
-    <%= link_to 'トップページに戻る', root_url , class: 'btn btn-sm btn-outline-primary' %>
+    </div>
+  <br>
+    <%= link_to 'トップページに戻る', root_url , class: 'btn btn-primary' %> 
   </aside>
   
   <div class="col-sm-8">
-    
-    
-  <h4>◎<%= @user.name %> さんが投稿した内容一覧</h4>
+  <h6>◎<%= @user.name %> さんが投稿した内容一覧</h4> 
+
+    <% @restaurants.each do |restaurant| %>
+      <div class="card-header">
+          <h4 class="card-title"><%= restaurant.name %></h4>
+      </div>
+      <div class="card-body">
+        <div>
+          営業場所:<%= restaurant.place %>
+        </div>
+        <div>
+          内容:<%= restaurant.content %>
+        </div>
+        <div>
+          <% if restaurant.photo? %>
+          <%= image_tag restaurant.photo.url , width: '50%' %>
+          <% end%>
+        </div>
+        <div>
+          投稿者:<%= restaurant.user.name %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+        </div>
+      </div>
+          <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-success' %>
+        <br>
+        <br>
+    <% end %>
+ 
   
-   
-   <br>
-  
-  
-  <% @restaurants.each do |restaurant| %>
-    <div class="card-header">
-        <h4 class="card-title"><%= restaurant.name %></h4>
-    </div>
-    <div class="card-body">
-      <div>
-        営業場所:<%= restaurant.place %>
-      </div>
-      <div>
-        内容:<%= restaurant.content %>
-      </div>
-      <div>
-        <% if restaurant.photo? %>
-        <%= image_tag restaurant.photo.url , width: '50%' %>
-        <% end%>
-      </div>
-      <div>
-        投稿者:<%= restaurant.user.name %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
-      </div>
-    </div>
-        <%= link_to '詳細を見る', restaurant , class: 'btn btn-sm btn-outline-primary' %>　
-    <br>
-    <br>
-  <% end %>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
   </div>
-</div>

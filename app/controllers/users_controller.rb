@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :destroy]
+  before_action :require_user_logged_in, only: [:index, :show, :destroy, :edit]
   
   
   def index
@@ -10,7 +10,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @restaurants = @user.restaurants.order(id: :desc).page(params[:page]).per(10)
   end
-
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.update(user_params)
+      flash[:success] = '正常に更新されました'
+      redirect_to @user
+    else
+      flash.now[:danger] = '更新されませんでした'
+      render :edit
+    end 
+  end
+    
   def new
     @user = User.new
   end
@@ -37,6 +53,6 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :prof, :password, :password_confirmation)
   end
 end
