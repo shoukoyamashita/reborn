@@ -6,8 +6,8 @@
 </div>
 
 <% if logged_in?%>
-  <p align=center style="color:green">
-    <%= current_user.name %>さん いつもご利用ありがとうございます
+  <p align=center>
+    <span style="color:green"><b><%= current_user.name %></b>さん</span> いつもご利用ありがとうございます
     <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
   </p>
 <% else %>

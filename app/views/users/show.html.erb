@@ -3,7 +3,9 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"><%= @user.name %>さん</h3>
-        <%= link_to 'プロフィールを編集する', edit_user_url, class: 'btn btn-sm btn-outline-success' %>
+        <% if @user == current_user %>
+          <%= link_to 'プロフィールを編集する', edit_user_url, class: 'btn btn-sm btn-outline-success' %>
+        <% end %>
       </div>
       <div class="card-body">
           <!-- img src="<%= gravatar_url(@user, { size: 250 }) %>" alt="" -->
