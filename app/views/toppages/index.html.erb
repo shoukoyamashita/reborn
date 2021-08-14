@@ -6,10 +6,10 @@
       <hr>
       <% if logged_in?%>
       <% else %>
-      <p>投稿するにはユーザー登録、ログインが必要です。
-          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
-      </p>
+        <p>投稿するにはユーザー登録、ログインが必要です。
+            <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
+        </p>
       <% end %>
     </div>
   </div>
