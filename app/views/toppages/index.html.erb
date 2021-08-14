@@ -1,21 +1,27 @@
-<div class="text-center">
-  <h3>熊本県人吉市周辺のグルメ情報</h3>
-  <%= image_tag 'hitoyoshi_station2.jpg' ,width: '100%'%>
-    <p>被災から復活したお店の情報を<br>投稿して街を盛り上げよう</p>
-  <hr>
+<div class="container">
+  <div class="jumbotron">
+    <div class="jumbotron-extend text-light">
+      <h2>熊本県人吉市周辺のグルメ情報</h2>
+      <p>被災から復活したお店の情報を投稿して街を盛り上げよう</p>
+      <hr>
+      <% if logged_in?%>
+      <% else %>
+      <p>投稿するにはユーザー登録、ログインが必要です。
+          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
+      </p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <% if logged_in?%>
-  <p align=center>
-    <span style="color:green"><b><%= current_user.name %></b>さん</span> いつもご利用ありがとうございます
-    <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
-  </p>
+  <div class='container'>
+    <div class='alert alert-primary text-center'><%= current_user.name %>さん いつもご利用ありがとうございます
+      <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
+    </div>
+  </div>
 <% else %>
-  <p align=center>
-          投稿するにはユーザー登録、ログインが必要です。
-          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
-  </p>
 <% end %>
 <% @restaurants.each do |restaurant| %>
   <div class="card-header border-info">
@@ -24,15 +30,15 @@
   
   <div class="card-body">
     <p>
-      <button type="button" class="btn btn-outline-dark btn-sm" disabled>営業場所</button>
+      <span class="p-2 mb-4 bg-light text-dark">営業場所</span>
       　<%= restaurant.place %>
     </p>
     <p>
-      <button type="button" class="btn btn-outline-dark btn-sm" disabled>料理・お店について</button>
+      <span class="p-2 mb-4 bg-light text-dark">料理・お店について</span>
     　<%= restaurant.content %>
     </p>
     <% if restaurant.photo? %>
-      <%= image_tag restaurant.photo.url , width: '80%' %>
+      <%= image_tag restaurant.photo.url , width: '60%' %>
     <% end%>
     <p>
       投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
