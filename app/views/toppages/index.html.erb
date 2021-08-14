@@ -1,14 +1,14 @@
 <div class="container">
   <div class="jumbotron">
     <div class="jumbotron-extend text-light">
-      <h2>熊本県人吉市周辺のグルメ情報</h2>
-      <p>被災から復活したお店の情報を投稿して街を盛り上げよう</p>
+      <h1>復興グルメ</h1>
+      <p >熊本県人吉市周辺のお店を投稿して街を盛り上げよう</p>
       <hr>
       <% if logged_in?%>
       <% else %>
         <p>投稿するにはユーザー登録、ログインが必要です。
-            <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
         </p>
       <% end %>
     </div>
