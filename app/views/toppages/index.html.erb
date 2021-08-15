@@ -17,7 +17,7 @@
 
 <% if logged_in?%>
   <div class='container'>
-    <div class='alert alert-primary text-center'><%= current_user.name %>さん いつもご利用ありがとうございます
+    <div class='alert alert-success text-center'><%= current_user.name %>さん いつもご利用ありがとうございます
       <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
     </div>
   </div>
