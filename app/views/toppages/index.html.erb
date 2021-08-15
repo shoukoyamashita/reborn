@@ -17,7 +17,7 @@
 
 <% if logged_in?%>
   <div class='container'>
-    <div class='alert alert-success text-center'><%= current_user.name %>さん いつもご利用ありがとうございます
+    <div class='alert alert-success text-center'><%= current_user.name %>さん こんにちは　
       <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
     </div>
   </div>
@@ -52,8 +52,5 @@
       <span class="text-muted">投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> posted at <%= restaurant.created_at %></span>
     </P>
     <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-outline-success' %>　
-    <% if current_user == restaurant.user %>
-    <%= link_to "この投稿を削除する", restaurant, method: :delete, data: { confirm: "削除してよろしいですか?" }, class: 'btn btn-outline-danger btn-sm' %>
-    <% end %>
    </div>
 <% end %>
