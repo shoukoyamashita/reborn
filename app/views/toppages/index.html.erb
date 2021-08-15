@@ -30,18 +30,26 @@
   
   <div class="card-body">
     <p>
-      <span class="p-2 mb-4 bg-light text-dark">営業場所</span>
-      　<%= restaurant.place %>
+      <!-- span class="p-2 mb-4 bg-light text-dark" --><!--/span-->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+        <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+      </svg>
+      営業場所
+      <span class="under-yellow"><%= restaurant.place %></span>
     </p>
     <p>
-      <span class="p-2 mb-4 bg-light text-dark">料理・お店について</span>
-    　<%= restaurant.content %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right" viewBox="0 0 16 16">
+        <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+      </svg>
+      料理・お店について
+    　<span class="under-blue"><%= restaurant.content %></span>
     </p>
     <% if restaurant.photo? %>
       <%= image_tag restaurant.photo.url , width: '60%' %>
     <% end%>
     <p>
-      投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> <span class="text-muted">posted at <%= restaurant.created_at %></span>
+      <span class="text-muted">投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> posted at <%= restaurant.created_at %></span>
     </P>
     <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-success' %>　
     <% if current_user == restaurant.user %>

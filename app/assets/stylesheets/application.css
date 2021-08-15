@@ -2,3 +2,13 @@
   background-image:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url("hitoyoshi_station2.jpg");
   background-size: cover;
 }
+
+
+
+.under-yellow {
+  background: linear-gradient(transparent 30%, #ffffaa 30%);
+}
+
+.under-blue {
+  background: linear-gradient(transparent 30%, #a8eaff 30%);
+}
