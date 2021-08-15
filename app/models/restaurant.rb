@@ -1,5 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :place, presence: true, length: { maximum: 255 }

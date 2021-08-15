@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   resources :users
-  resources :restaurants
+  resources :restaurants do
+    resources :comments, only: [:create, :destroy]
+  end
 end

@@ -7,6 +7,10 @@ class RestaurantsController < ApplicationController
   end
   
   def show
+    @comment =Comment.new #新規コメント用
+    @restaurant = Restaurant.find(params[:id])
+    @comments =@restaurant.comments #コメント表示用投稿に関連づくコメントの取得
+
   end
   
   def new
@@ -23,7 +27,6 @@ class RestaurantsController < ApplicationController
       @restaurants = current_user.restaurants.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿されませんでした'
       render action: "new"
-      #render 'toppages/index'
     end
   end
 
