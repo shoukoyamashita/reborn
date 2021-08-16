@@ -12,3 +12,7 @@
 .under-blue {
   background: linear-gradient(transparent 30%, #a8eaff 30%);
 }
+
+.under-green {
+  background: linear-gradient(transparent 1%, #ccffcc 1%);
+}
