@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_11_120449) do
+ActiveRecord::Schema.define(version: 2022_03_11_151738) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2022_03_11_120449) do
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_comments_on_restaurant_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "mylists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_mylists_on_restaurant_id"
+    t.index ["user_id"], name: "index_mylists_on_user_id"
   end
 
   create_table "restaurants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,5 +63,7 @@ ActiveRecord::Schema.define(version: 2022_03_11_120449) do
 
   add_foreign_key "comments", "restaurants"
   add_foreign_key "comments", "users"
+  add_foreign_key "mylists", "restaurants"
+  add_foreign_key "mylists", "users"
   add_foreign_key "restaurants", "users"
 end
