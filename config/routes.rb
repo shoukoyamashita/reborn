@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
