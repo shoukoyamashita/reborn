@@ -10,4 +10,6 @@ class User < ApplicationRecord
   
   has_many :restaurants, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :mylists
+  has_many :likes, through: :mylists, source: :restaurant
 end
