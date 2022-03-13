@@ -9,8 +9,16 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
-  resources :users
+  
+  resources :users do
+    member do
+      get :likes
+    end
+  end
   resources :restaurants do
     resources :comments, only: [:create, :destroy]
   end
+  
+  resources :mylists, only: [:create, :destroy]
+  
 end
