@@ -5,7 +5,7 @@
   <% end %>
 <% else %>
   <%= form_with(model: current_user.mylists.build, local: true) do |f| %>
-    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+    <%= hidden_field_tag :restaurant_id, @restaurant.id%>
     <%= f.submit 'お気に入りに追加', class: 'btn btn-success btn-sm' %>
   <% end %>
 <% end %>

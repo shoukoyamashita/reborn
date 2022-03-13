@@ -1,5 +1,8 @@
 class MylistsController < ApplicationController
   before_action :require_user_logged_in
+  def show
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
   
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
@@ -14,4 +17,5 @@ class MylistsController < ApplicationController
     flash[:success] = 'お気に入りを解除しました'
     redirect_to restaurant
   end
+  
 end

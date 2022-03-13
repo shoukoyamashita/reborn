@@ -1,7 +1,6 @@
-<h5>投稿id: <%= @restaurant.id %> の詳細ページ</h5>
-
+<% @likes.each do |restaurant| %>
   <div class="card-header border-info">
-    <h3 class="card-title"><%= @restaurant.name %></h3>
+    <h3 class="card-title"><%= restaurant.name %></h3>
   </div>
   <div class="card-body">
     <p>
@@ -10,27 +9,26 @@
         <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
       </svg>
       営業場所　　
-      <span class="under-yellow"><%= @restaurant.place %></span>
+      <span class="under-yellow"><%= restaurant.place %></span>
     </p>
     <p>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right" viewBox="0 0 16 16">
         <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
       </svg>
       料理・お店について　　
-      <span class="under-blue"><%= @restaurant.content %></span>
+      <span class="under-blue"><%= restaurant.content %></span>
     </p>
-      <%= image_tag @restaurant.photo.url , width: '80%' if @restaurant.photo? %>
+      <%= image_tag restaurant.photo.url , width: '80%' if restaurant.photo? %>
     <p>
-      <span class="text-muted">投稿者:<%= link_to @restaurant.user.name, user_path(@restaurant.user) %> posted at <%= @restaurant.created_at %></span>
+      <span class="text-muted">投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> posted at <%= restaurant.created_at %></span>
     </P>
-  <% if current_user == @restaurant.user %>
-    <%= link_to 'この投稿を編集する', edit_restaurant_path(@restaurant), class: 'btn btn-sm btn-outline-primary' %>
-    <%= link_to "この投稿を削除する", @restaurant, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>
-  <% end %>
+  <% if current_user == restaurant.user %>
+    <%= link_to 'この投稿を編集する', edit_restaurant_path(restaurant), class: 'btn btn-sm btn-outline-primary' %>
+    <%= link_to "この投稿を削除する", restaurant, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>
+<% end %>
   </div>
-    <div class="text-left">
-      <%= render 'mylists/like_button', restaurants: @restaurants %>
-    </div>
+      <!%= render 'mylists/like_button', restaurant: @restaurant %>
+  <% end %>
   <hr>
   <p>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
@@ -38,33 +36,17 @@
     </svg>
     コメント
   </p>
-  <% @comments.each do |comment| %>
+  <% @likes.each do |comment| %>
     　<%= comment.user.name %>
     :
     <%= comment.content %>　
     <% if current_user == comment.user %>
       <div class="text-right">
-        <%= link_to 'コメントを削除', restaurant_comment_path(@restaurant, comment), class: 'btn btn-sm btn-outline-danger',method: :delete %>
+        <!%= link_to 'コメントを削除', restaurant_comment_path(@restaurant, comment), class: 'btn btn-sm btn-outline-danger',method: :delete %>
       </div>
     <% end %>
     <br>
   <% end %>
-  <% if logged_in?%>
-  <p>
-  <%= form_with model: [@restaurant, @comment], local: true do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-    <div class = 'form-group'>
-      <%= f.text_area :content, class: 'form-control', rows: 1 %>
-    </div>
-    
-    <div class="text-left">
-      <%= f.submit "コメントする", class: "btn btn-sm btn-primary" %>
-    </div>
-  <% end %>
-  </p>
-  <% else %>
-  <br>
-  <p>
-  <span class="under-green">　ログインするとコメントできます　</span>
-  </p>
-  <% end %>
+    <br>
+    <br>
+    <br>
