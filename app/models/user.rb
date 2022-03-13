@@ -12,4 +12,25 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :mylists
   has_many :likes, through: :mylists, source: :restaurant
+  
+   #　ここからがお気に入り機能(Mylist)
+  
+  def like(restaurant)
+    self.mylists.find_or_create_by(restaurant_id: restaurant.id)
+  end
+  
+  def unlike(restaurant)
+    mylist = self.mylists.find_by(restaurant_id: restaurant.id)
+    mylist.destroy if mylist
+  end
+  
+  def liking?(restaurant)
+    self.likes.include?(restaurant)
+  end
+  
+# お気に入り一覧を表示
+  def feed_likerestaurants
+    Restaurant.where(user_id: self.like_ids)
+  end
+  
 end
