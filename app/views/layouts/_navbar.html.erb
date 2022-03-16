@@ -7,7 +7,8 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <% if logged_in? %>
+        <!% if logged_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'マイリスト',likes_user_path(current_user), class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '新規投稿', new_restaurant_path, class: 'nav-link' %></li>
@@ -16,7 +17,7 @@
             <ul class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
               <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
