@@ -1,6 +1,5 @@
 class ToppagesController < ApplicationController
-
-before_action :set_restaurant,only:[:show, :edit, :update, :destroy]
+  before_action :set_restaurant,only:[:show, :edit, :update, :destroy]
   
   def index
     @restaurants = Restaurant.order(id: :desc).page(params[:page]).per(10)

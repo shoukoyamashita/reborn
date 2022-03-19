@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :logged_in?, only: :create
+  # before_action :logged_in?, only: :create
+  
+  before_action :authenticate_user!, only: :create
   before_action :correct_user,   only: :destroy
   
   def new

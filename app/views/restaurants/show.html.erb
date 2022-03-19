@@ -29,7 +29,8 @@
     <%= link_to "この投稿を削除する", @restaurant, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>
   <% end %>
 </div>
-<% if logged_in?%>
+<!% if logged_in?%>
+<% if user_signed_in? %>
   <div class="text-left">
     <%= render 'mylists/like_button', restaurants: @restaurants %>
   </div>
@@ -57,7 +58,8 @@
 
 <br>
 
-<% if logged_in?%>
+<!% if logged_in?%>
+<% if user_signed_in? %>
 
 <div>
   <%= form_with model: [@restaurant, @comment], local: true do |f| %>

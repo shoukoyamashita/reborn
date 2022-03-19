@@ -1,8 +1,8 @@
 class MylistsController < ApplicationController
-  before_action :require_user_logged_in
+  # before_action :require_user_logged_in
+  
   def show
     @restaurant = Restaurant.find(params[:restaurant_id])
-   
   end
   
   def create

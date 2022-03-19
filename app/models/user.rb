@@ -14,8 +14,8 @@ class User < ApplicationRecord
   
   has_many :restaurants, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :mylists
-  has_many :likes, through: :mylists, source: :restaurant
+  has_many :mylists, dependent: :destroy
+  has_many :likes, through: :mylists, source: :restaurant, dependent: :destroy
   
    #　ここからがお気に入り機能(Mylist)
   
