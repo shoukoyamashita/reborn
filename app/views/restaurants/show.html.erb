@@ -46,13 +46,11 @@
 </p>
 
 <% @comments.each do |comment| %>
-  <%= comment.user.name %> : <%= comment.content %>　
-  <br>
-  <br>
-    <% if current_user == comment.user %>
-      <div class="text-right">
-      <%= link_to 'コメントを削除', restaurant_comment_path(@restaurant, comment), class: 'btn btn-sm btn-outline-danger',method: :delete %>
-      </div>
+  <p><%= comment.user.name %> : <%= comment.content %></p>　
+  <% if current_user == comment.user %>
+    <div class="text-right">
+    <%= link_to 'コメントを削除', restaurant_comment_path(@restaurant, comment), class: 'btn btn-sm btn-outline-danger',method: :delete %>
+    </div>
     <% end %>
 <% end %>
 

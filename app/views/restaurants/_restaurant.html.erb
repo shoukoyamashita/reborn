@@ -23,13 +23,12 @@
       <span class="text-muted">投稿者:<%= link_to restaurant.user.name, user_path(restaurant.user) %> posted at <%= restaurant.created_at %></span>
     </P>
     <p>
+      <%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-outline-success' %>　
       <%= form_with(model: current_user.mylists.find_by(restaurant_id: restaurant.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :restaurant_id, restaurant.id %>
         <%= f.submit 'お気に入りを解除', class: 'btn btn-warning btn-sm' %>
     </p>
     <% end %>
-    
-    <p><%= link_to 'もっと見る', restaurant , class: 'btn btn-sm btn-outline-success' %></p>
   </div>
 <% end %>
 

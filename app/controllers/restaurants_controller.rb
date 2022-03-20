@@ -9,7 +9,8 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @comment =Comment.new #新規コメント用
-    @comments =@restaurant.comments #コメント表示用投稿に関連づくコメントの取得
+    #コメント表示用投稿に関連づくコメントの取得
+    @comments =@restaurant.comments 
 
   end
   

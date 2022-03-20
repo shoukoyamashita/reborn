@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment.restaurant_id = params[:restaurant_id]
 
     if @comment.save
-      flash[:success] = 'コメントしました。'
+      flash[:success] = '.コメントしました。'
       SampleMailer.get_comment(@comment.restaurant.user).deliver
       redirect_to @comment.restaurant
     else
@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
     flash[:success] = 'コメントを削除しました。'
     
     redirect_to @comment.restaurant
-    # redirect_back(fallback_location: root_path) 
   end
 
 
