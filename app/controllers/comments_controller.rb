@@ -10,9 +10,10 @@ class CommentsController < ApplicationController
   def create 
     @comment = current_user.comments.build(comment_params)
     @comment.restaurant_id = params[:restaurant_id]
-    
+
     if @comment.save
       flash[:success] = 'コメントしました。'
+      SampleMailer.get_comment(@comment.restaurant.user).deliver
       redirect_to @comment.restaurant
     else
       flash[:danger] = 'コメントできませんでした。空欄では入力できません。'

@@ -1,5 +1,5 @@
 <header class="mb-3">
-  <nav class="navbar navbar-expand-sm navbar-light" style="background-color:gold;">
+  <nav class="navbar navbar-expand-sm fixed-top navbar-light" style="background-color:gold;">
     <a class="navbar-brand" href="/">復興グルメ！</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -13,9 +13,9 @@
           <li class="nav-item"><%= link_to 'マイリスト', likes_user_path(:current_user), class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '新規投稿', new_restaurant_path, class: 'nav-link' %></li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><!%= current_user.name %></a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
-              <li class="dropdown-item"><%= link_to 'My profile', user_path(:current_user) %></li>
+              <li class="dropdown-item"><%= link_to 'プロフィール', user_path(current_user) %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>

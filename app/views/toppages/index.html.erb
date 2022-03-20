@@ -20,7 +20,7 @@
 <% if user_signed_in? %>
   <div class='container'>
     <div class='alert alert-success text-center'>
-      <b><%= current_user.name %></b>さん　こんにちは　 
+      <b><%= current_user.name %></b>さん　こんにちは
       <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
     </div>
   </div>
