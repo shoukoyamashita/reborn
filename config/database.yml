@@ -54,6 +54,7 @@ production:
   <<: *default
   database: reborn_production
   username: root
-  password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>
+  # password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
   
