@@ -55,9 +55,18 @@ gem 'kaminari'
 
 gem 'carrierwave'
 
-
-group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
-end
+# group :production do
+#   gem 'pg', '>= 0.18', '< 2.0'
+# end
 
 gem "aws-sdk-s3", require: false
+
+gem 'devise'
+
+gem 'devise-i18n'
+
+# group :production do
+#   gem 'unicorn', '5.4.1'
+# end
+
+gem 'unicorn', '5.4.1'

@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :logged_in?, only: :create
+  # before_action :logged_in?, only: :create
+  
+  before_action :authenticate_user!, only: :create
   before_action :correct_user,   only: :destroy
   
   def new
@@ -8,9 +10,10 @@ class CommentsController < ApplicationController
   def create 
     @comment = current_user.comments.build(comment_params)
     @comment.restaurant_id = params[:restaurant_id]
-    
+
     if @comment.save
-      flash[:success] = 'コメントしました。'
+      flash[:success] = '.コメントしました。'
+      SampleMailer.get_comment(@comment.restaurant.user).deliver
       redirect_to @comment.restaurant
     else
       flash[:danger] = 'コメントできませんでした。空欄では入力できません。'
@@ -21,7 +24,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+
     flash[:success] = 'コメントを削除しました。'
+    
     redirect_to @comment.restaurant
   end
 

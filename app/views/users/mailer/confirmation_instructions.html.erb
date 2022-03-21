@@ -1,0 +1,7 @@
+<p>こんにちは。<%= @user.name %> さま!</p>
+<p>復興グルメです。</p>
+
+<p>下記のリンクを押して、ユーザー登録を完了しましょう。</p>
+
+
+<p><%= link_to 'ユーザー登録を完了する', confirmation_url(@resource, confirmation_token: @token) %></p>

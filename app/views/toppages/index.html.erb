@@ -4,26 +4,29 @@
       <h1>復興グルメ</h1>
       <p >熊本県人吉市周辺のお店を投稿して<br>街を盛り上げよう</p>
       <hr>
-      <% if logged_in?%>
+      <!--<!% if logged_in?%>-->
+      <% if user_signed_in? %>
       <% else %>
         <p>投稿するにはユーザー登録、ログインが必要です。
-          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-primary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'ユーザー登録', new_user_registration_path, class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-sm btn-primary' %>
         </p>
       <% end %>
     </div>
   </div>
 </div>
 
-<% if logged_in?%>
+<!--<!% if logged_in?%>-->
+<% if user_signed_in? %>
   <div class='container'>
     <div class='alert alert-success text-center'>
-      <b><%= current_user.name %></b>さん　こんにちは　
+      <b><%= current_user.name %></b>さん　こんにちは
       <%= link_to '新規投稿', new_restaurant_path, class: 'btn btn-sm btn-primary' %>
     </div>
   </div>
 <% else %>
 <% end %>
+
 <% @restaurants.each do |restaurant| %>
   <div class="card-header border-info">
     <h3 class="card-title"><%= restaurant.name %></h3>

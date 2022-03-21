@@ -48,9 +48,17 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: reborn_production
-  username: reborn
-  password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+  <<: *default
+  # database: reborn_production
+  # username: root
+  # # password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>
+  # password: <%= ENV['DATABASE_PASSWORD'] %>
+  # socket: /var/lib/mysql/mysql.sock
+  database: <%= Rails.application.credentials.db[:database] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  socket: <%= Rails.application.credentials.db[:socket] %>
+  

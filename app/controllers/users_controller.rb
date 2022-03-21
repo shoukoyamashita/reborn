@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :destroy, :edit, :update]
+  # before_action :require_user_logged_in, only: [:index, :destroy, :edit, :update]
+  before_action :authenticate_user!, only: [:index, :destroy, :edit, :update, :likes]
   before_action :correct_user, only: [:destroy, :edit, :update]
   
   
@@ -47,8 +48,14 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-      flash[:success] = 'ユーザー削除（退会）しました'
-      redirect_to root_url
+    flash[:success] = 'ユーザー削除（退会）しました'
+    redirect_to root_url
+  end
+  
+  def likes
+    # @user = User.find(params[:id])
+    
+    @likes = current_user.likes.page(params[:page])
   end
   
   private
