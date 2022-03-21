@@ -52,6 +52,7 @@ production:
   encoding: unicode
   pool: 5
   database: reborn_production
-  username: reborn
+  username: root
   password: <%= ENV['REBORN_DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
+  
