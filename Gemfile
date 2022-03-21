@@ -65,6 +65,8 @@ gem 'devise'
 
 gem 'devise-i18n'
 
-group :production do
-  gem 'unicorn', '5.4.1'
-end
+# group :production do
+#   gem 'unicorn', '5.4.1'
+# end
+
+gem 'unicorn', '5.4.1'
